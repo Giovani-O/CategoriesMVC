@@ -1,0 +1,41 @@
+﻿@model CategoriesMVC.Models.CategoryViewModel
+
+<h3>Deletar Categoria</h3>
+<h4>Confirma a exclusão desta Categoria ?</h4>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ImageUrl)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ImageUrl)
+        </dd>
+    </dl>
+    <div class="row">
+        <div class="form-group col-md-6" style="padding-top: 10px">
+            @if (string.IsNullOrEmpty(@Model.ImageUrl))
+            {
+                <img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/no-image-3215175-2672258.png?f=webp" />
+            }
+            else
+            {
+                <img src="@Model.ImageUrl" />
+            }
+        </div>
+    </div>
+
+    <form asp-action="DeleteCategory">
+        <input type="hidden" asp-for="Id" />
+        <div class="form-group" style="padding-top: 10px">
+            <input type="submit" value="Deletar" class="btn btn-danger" />
+            <a asp-action="Index" class="btn btn-info">Retornar</a>
+        </div>
+    </form>
+</div>

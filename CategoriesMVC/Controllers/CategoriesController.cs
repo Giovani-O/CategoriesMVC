@@ -67,4 +67,25 @@ public class CategoriesController : Controller
         ViewBag.Erro = "Erro ao atualizar categoria";
         return View(categoryViewModel);
     }
+
+    [HttpGet]
+    public async Task<ActionResult> DeleteCategory(int id)
+    {
+        var result = await _categoryService.GetCategoryById(id);
+
+        if (result is null)
+            return View("Error");
+
+        return View(result);
+    }
+    [HttpPost(), ActionName("DeleteCategory")]
+    public async Task<IActionResult> ConfirmDelete(int id)
+    {
+        var result = await _categoryService.DeleteCategory(id);
+
+        if (result)
+            return RedirectToAction("Index");
+
+        return View("Error");
+    }
 }
