@@ -42,4 +42,29 @@ public class CategoriesController : Controller
         ViewBag.Erro = "Erro ao criar categoria";
         return View(categoryViewModel);
     }
+
+    [HttpGet]
+    public async Task<IActionResult> UpdateCategory(int id)
+    {
+        var result = await _categoryService.GetCategoryById(id);
+
+        if (result is null)
+            return View("Error");
+
+        return View(result);
+    }
+
+    [HttpPost]
+    public async Task<ActionResult<CategoryViewModel>> UpdateCategory(int id, CategoryViewModel categoryViewModel)
+    {
+        if (ModelState.IsValid)
+        {
+            var result = await _categoryService.UpdateCategory(id, categoryViewModel);
+
+            if (result)
+                return RedirectToAction(nameof(Index));
+        }
+        ViewBag.Erro = "Erro ao atualizar categoria";
+        return View(categoryViewModel);
+    }
 }
