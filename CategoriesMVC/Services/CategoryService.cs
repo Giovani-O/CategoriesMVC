@@ -6,7 +6,7 @@ namespace CategoriesMVC.Services
 {
     public class CategoryService : ICategoryService
     {
-        private const string apiEndpoint = "/api/1/categories/";
+        private const string apiEndpoint = "/categories/";
         private readonly JsonSerializerOptions _options;
         private readonly IHttpClientFactory _clientFactory;
 
