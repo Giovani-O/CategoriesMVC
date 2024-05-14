@@ -22,4 +22,24 @@ public class CategoriesController : Controller
 
         return View(result);
     }
+
+    [HttpGet]
+    public IActionResult CreateNewCategory()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public async Task<ActionResult<CategoryViewModel>> CreateNewCategory(CategoryViewModel categoryViewModel)
+    {
+        if (ModelState.IsValid)
+        {
+            var result = await _categoryService.CreateCategory(categoryViewModel);
+
+            if (result is not null)
+                return RedirectToAction(nameof(Index));
+        }
+        ViewBag.Erro = "Erro ao criar categoria";
+        return View(categoryViewModel);
+    }
 }
