@@ -18,12 +18,13 @@ builder.Services.AddHttpClient("ProductsApi", c =>
 
 builder.Services.AddHttpClient("AuthenticationApi", c =>
 {
-    c.BaseAddress = new Uri(builder.Configuration["ServiceUri:AuthenticationApi"]);
+    c.BaseAddress = new Uri(builder.Configuration["ServiceUri:AuthenticationApi"]!);
     c.DefaultRequestHeaders.Accept.Clear();
     c.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 });
 
 builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IAuthentication, Authentication>();
 
 var app = builder.Build();
