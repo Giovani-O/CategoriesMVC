@@ -34,7 +34,7 @@ public class ProductsController : Controller
     public async Task<IActionResult> CreateNewProduct()
     {
         ViewBag.CategoryId =
-           new SelectList(await _categoryService.GetCategories(), "CategoryId", "Name");
+           new SelectList(await _categoryService.GetCategories(), "Id", "Name");
 
         return View();
     }
