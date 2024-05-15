@@ -76,7 +76,7 @@ public class ProductsController : Controller
             return View("Error");
 
         ViewBag.CategoryId =
-          new SelectList(await _categoryService.GetCategories(), "CategoryId", "Name");
+          new SelectList(await _categoryService.GetCategories(), "Id", "Name");
 
         return View(result);
     }
