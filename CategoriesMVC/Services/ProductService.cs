@@ -8,7 +8,7 @@ namespace CategoriesMVC.Services;
 public class ProductService : IProductService
 {
     private readonly IHttpClientFactory _clientFactory;
-    private const string apiEndpoint = "/Products?api-version=1";
+    private const string apiEndpoint = "/Products/";
     private readonly JsonSerializerOptions _options;
     private ProductViewModel productViewModel;
     private IEnumerable<ProductViewModel> productsViewModel;
