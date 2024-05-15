@@ -11,6 +11,11 @@ builder.Services.AddHttpClient("CategoriesApi", c =>
     c.BaseAddress = new Uri(builder.Configuration["ServiceUri:CategoriesApi"]!);
 });
 
+builder.Services.AddHttpClient("ProductsApi", c =>
+{
+    c.BaseAddress = new Uri(builder.Configuration["ServiceUri:ProductsApi"]!);
+});
+
 builder.Services.AddHttpClient("AuthenticationApi", c =>
 {
     c.BaseAddress = new Uri(builder.Configuration["ServiceUri:AuthenticationApi"]);
